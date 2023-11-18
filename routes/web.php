@@ -8,6 +8,8 @@ use App\Http\Controllers\relationshipController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\SendmailController;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\EeventController;
+use App\Http\Controllers\EmpolyeeController;
 
 
 
@@ -22,17 +24,17 @@ use App\Http\Controllers\ExportController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return '<h1>'.'WELCOME TO AJEX WITH LARAVEL PROJEC.'.'</h1>';
+});
 
 
-// Route::post("/ajaxDataInsert",[ajaxController::class,"insertdata"]);
-// Route::get("/indexdata",[ajaxController::class,"ajaxtable"]);
-// Route::get("/index",[ajaxController::class,"ajaxindex"]);
-// Route::get("/showdatas",[ajaxController::class,"showdata"]);
-// Route::get("/listingdatas",[ajaxController::class,"listingdata"]);
-// Route::get("/editdatas",[ajaxController::class,"editdata"]);
+Route::post("/ajaxDataInsert",[ajaxController::class,"insertdata"]);
+Route::get("/indexdata",[ajaxController::class,"ajaxtable"]);
+Route::get("/index",[ajaxController::class,"ajaxindex"]);
+Route::get("/showdatas",[ajaxController::class,"showdata"]);
+Route::get("/listingdatas",[ajaxController::class,"listingdata"]);
+Route::get("/editdatas",[ajaxController::class,"editdata"]);
 
 // Route::get("demo",[demoController::class,"demouser"]);
 
@@ -44,7 +46,7 @@ use App\Http\Controllers\ExportController;
 // Route::get('logout',[customAuthController::class,'logout']); 
 
 
-Route::get('relation',[relationshipController::class,'relationTest']);
+// Route::get('relation',[relationshipController::class,'relationTest']);
 // Route::get('index',[TestController::class,'index']);
 // Route::get('insertForm',[TestController::class,'insertForm'])->name('insertForm');
 // Route::post('insertDatas',[TestController::class,'insertData'])->name('insertDatas');
@@ -58,4 +60,12 @@ Route::get('relation',[relationshipController::class,'relationTest']);
 // Route::get('exportImport',[ExportController::class,'exportImport']);
 // Route::get('export',[ExportController::class,'export'])->name('export');
 // Route::post('import',[ExportController::class,'import'])->name('import');
+
+// Route::get('event',[EeventController::class,'eventIndex'])->name('event');
+Route::get('create',[EmpolyeeController::class,'create'])->name('create');
+Route::post('store',[EmpolyeeController::class,'store'])->name('store');
+Route::get('index',[EmpolyeeController::class,'index'])->name('index');
+Route::get('edit/{id}',[EmpolyeeController::class,'edit'])->name('edit');
+Route::post('update',[EmpolyeeController::class,'update'])->name('update');       
+
 
