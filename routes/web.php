@@ -33,8 +33,9 @@ Route::post("/ajaxDataInsert",[ajaxController::class,"insertdata"]);
 Route::get("/indexdata",[ajaxController::class,"ajaxtable"]);
 Route::get("/index",[ajaxController::class,"ajaxindex"]);
 Route::get("/showdatas",[ajaxController::class,"showdata"]);
-Route::get("/listingdatas",[ajaxController::class,"listingdata"]);
+Route::get("/listingdatas",[ajaxController::class,"listingdata"])->name("listingdata");
 Route::get("/editdatas",[ajaxController::class,"editdata"]);
+Route::post("/update",[ajaxController::class,"update"])->name('em_update');
 
 // Route::get("demo",[demoController::class,"demouser"]);
 
@@ -66,6 +67,9 @@ Route::get('create',[EmpolyeeController::class,'create'])->name('create');
 Route::post('store',[EmpolyeeController::class,'store'])->name('store');
 Route::get('index',[EmpolyeeController::class,'index'])->name('index');
 Route::get('edit/{id}',[EmpolyeeController::class,'edit'])->name('edit');
-Route::post('update',[EmpolyeeController::class,'update'])->name('update');       
+Route::post('update',[EmpolyeeController::class,'update'])->name('update'); 
+Route::get('customAttribute',[EmpolyeeController::class,'customAttribute'])->name('customAttribute');
+
+
 
 

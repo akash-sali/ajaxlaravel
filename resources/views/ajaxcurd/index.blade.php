@@ -63,18 +63,15 @@
                         <th>Id</th>
                         <th>Name</th>
                         <th>Address</th>
-                        <th>Email</th>
-                        <th>Password</th>
+                        <th>Email</th>                        
                         <th>Contact</th>
                         <th>Image</th>
                         <th colspan="2">Action</th>
                         
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr id="allrecord">
-
-                    </tr>
+                    <tbody id="allrecord">
+                    
                     </tbody>
                 </table>
             </div>
@@ -125,23 +122,10 @@
         function reload() {
             
                  $.ajax({                   
-                     url: "{{url('index')}}",
+                     url: "{{route('listingdata')}}",
                      type: "GET",
                          success:function(data){
-                            //console.log(data.students[0]);return false;
-                            $.each(data.students,function(key,item){                
-                                                        
-                             $('#allrecord').html(
-                            `<td>${item['id']}</td>
-                            <td>${item['name']}</td>
-                            <td>${item['address']}</td>
-                            <td>${item['email']}</td>
-                            <td>${item['password']}</td>
-                            <td>${item['contact']}</td>
-                            <td><img src='upload/${item['images']}' alt='image' width ='60px'></td>
-                            <td><button class='btn btn-success'id = 'edit' >Edit</button>&nbsp
-                            <button  class='btn btn-danger'>Delete</button></td>`);                              
-                            })
+                            $('#allrecord').html(data);  
                         }
                          
                      })

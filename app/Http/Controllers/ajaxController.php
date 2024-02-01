@@ -14,7 +14,6 @@ class ajaxController extends Controller
     public function insertdata(Request $request){
 
          $data = new student();
-           
          $data->name=$request->input('name');
          
          $data->address=$request->input('address');
@@ -39,10 +38,7 @@ class ajaxController extends Controller
          $data->images = $filename;
          
         } 
-        
-       
         $data->save();
-     
          return response()->json(["massage"=>"insert success"]);
 
     }
@@ -57,6 +53,29 @@ class ajaxController extends Controller
         return response()->json([
             'students'=>$student,
         ]);
+    }
+
+    public function listingdata(){
+        $data = student::all();
+        $html = "";
+        foreach ($data as $key => $value) {
+            $html .= '
+                <tr>
+                    <td>'.$value->id.'</td>
+                    <td>'.$value->name.'</td>
+                    <td>'.$value->address.'</td>                 
+                    <td>'.$value->email.'</td>
+                    <td>'.$value->contact.'</td>
+                    <td>'.$value->images.'</td>
+                    <td?></td>
+                </tr>
+            ';
+        }
+        return $html;
+    }
+
+    function update(Request $request){
+        print_r($request->all());die;
     }
     
 }

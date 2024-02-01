@@ -51,13 +51,18 @@ class EmpolyeeController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new empolyee(); 
-        $data->name = $request->name;
-        $data->phone = $request->phone;
-        $data->email = $request->email;
-        $data->password = $request->password;
-        $data->address = $request->address;
-        $data->save();
+        $data = empolyee::create([
+            'name'=>$request->name,
+            'phone'=>$request->phone,
+            'email'=>$request->email,
+            'password'=>$request->password,
+            'address'=>$request->address,
+            
+        ]); 
+  
+        if($data){
+          return  $data->getRenameAttribute($data->name);
+        }
         return response()->json(["massage"=>"insert success"]);
     }
 
@@ -113,6 +118,15 @@ class EmpolyeeController extends Controller
     return $html;
         
           
+
+
+
+
+
+
+
+
+    
     }
 
     /**
@@ -136,5 +150,10 @@ class EmpolyeeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function customAttribute() {
+        $data = empolyee::first()->getRenameAttribute("myname is akash sali");
+        // return $data;
     }
 }

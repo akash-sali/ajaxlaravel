@@ -16,4 +16,12 @@ class empolyee extends Model
         'password',
         'address'
     ];
+
+    protected  $appends = ['rename'];
+
+    public function  getRenameAttribute($text)
+    {
+        print_r($text);die;
+        return $this->name.' akashsali';
+    }
 }
